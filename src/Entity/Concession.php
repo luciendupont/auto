@@ -25,10 +25,10 @@ class Concession
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
-    #[ORM\Column]
+    #[ORM\Column (length: 255)]
     private ?bool $voituredisponible = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 7, scale: 2)]
+    #[ORM\Column(length: 255)]
     private ?string $prixdelavoiture = null;
 
     #[ORM\Column(length: 255)]
