@@ -4,6 +4,8 @@ namespace App\DataFixtures;
 
 use App\Entity\Concession;
 use App\Entity\Marque;
+use App\Entity\Personne;
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -186,8 +188,43 @@ class AppFixtures extends Fixture
         $concession14->setImagedelavoiture('a3.png');
         $manager->persist($concession14);
 
-        
+        $personne=new Personne();
+        $personne->setNom('');
+        $personne->setPrenom('');
+        $personne->setDatedenaissance('');
+        $personne->setDatedupermis('');
+        $personne->setMail('');
+        $personne->setTelephone('');
+        $personne->setAdresse('');
+        $personne->setCodepostal('');
+        $personne->setVille('');
+        $manager->persist($personne);
 
+
+        $user = new User();
+        $user->setNom('dupont')
+              ->setPrenom('lucien')
+              ->setEmail('lucienluludupont@gmail.com')
+              ->setTelephone('0610041848')
+              ->setPassword(password_hash('Amiens80', PASSWORD_DEFAULT))
+              ->setRoles(['ROLE_ADMIN', 'ROLE_USER'])
+              ->setAdresse('7 mail roger salengro apt 55')
+              ->setCp('80090')
+              ->setVille('Amiens');
+        $manager->persist($user);
+
+
+        $user1 = new User();
+        $user1->setPrenom('brigitte')
+              ->setNom('dupont')
+              ->setEmail('kelly@gmail.com')
+              ->setTelephone('7896547800')
+              ->setPassword(password_hash('password', PASSWORD_DEFAULT))
+              ->setRoles(['ROLE_USER'])
+              ->setAdresse('308 Post Avenue')
+              ->setCp('69000')
+              ->setVille('Lugdunum');
+        $manager->persist($user1);
 
 
 
