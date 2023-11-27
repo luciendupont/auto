@@ -9,6 +9,7 @@ use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
+
 class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
@@ -225,22 +226,6 @@ class AppFixtures extends Fixture
               ->setCp('69000')
               ->setVille('Lugdunum');
         $manager->persist($user1);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         $manager->flush();
     }
 }

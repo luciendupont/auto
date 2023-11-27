@@ -4,8 +4,10 @@ namespace App\Entity;
 
 use App\Repository\VendeurRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Metadata\ApiResource;
 
 #[ORM\Entity(repositoryClass: VendeurRepository::class)]
+#[ApiResource()]
 class Vendeur
 {
     #[ORM\Id]
