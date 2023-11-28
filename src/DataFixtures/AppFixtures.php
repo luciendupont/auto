@@ -4,8 +4,10 @@ namespace App\DataFixtures;
 
 use App\Entity\Concession;
 use App\Entity\Marque;
+use App\Entity\Marque_Concession;
 use App\Entity\Personne;
 use App\Entity\User;
+use App\Entity\Vendeur;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -189,19 +191,8 @@ class AppFixtures extends Fixture
         $concession14->setImagedelavoiture('a3.png');
         $manager->persist($concession14);
 
-        $personne=new Personne();
-        $personne->setNom('');
-        $personne->setPrenom('');
-        $personne->setDatedenaissance('');
-        $personne->setDatedupermis('');
-        $personne->setMail('');
-        $personne->setTelephone('');
-        $personne->setAdresse('');
-        $personne->setCodepostal('');
-        $personne->setVille('');
-        $manager->persist($personne);
-
-
+        
+    
         $user = new User();
         $user->setNom('dupont')
               ->setPrenom('lucien')
@@ -225,7 +216,36 @@ class AppFixtures extends Fixture
               ->setAdresse('308 Post Avenue')
               ->setCp('69000')
               ->setVille('Lugdunum');
-        $manager->persist($user1);
+        $manager->persist($user1);  
+
+
+           $personne=new Personne();
+        $personne->setNom('pommier ');
+        $personne->setPrenom('benoit');
+        $personne->setDatedenaissance('15/10/1976');
+        $personne->setDatedupermis('25/11/1994');
+        $personne->setMail('piu@li.fr');
+        $personne->setTelephone('0362523525');
+        $personne->setAdresse('1 rue du chateau');
+        $personne->setCodepostal('14258');
+        $personne->setVille('saint pierre');
+        $manager->persist($personne);
+        
+        $vendeur = new Vendeur();
+        $vendeur->setNom('shmitt');
+        $vendeur->setPrenom('edgar');
+        $vendeur->setDateachatvoiture('25/11/2023');
+        $vendeur->setPrixdelavente('21200');
+        $vendeur->setRemiseachat('20%');
+        $vendeur->setPersonne($personne);
+        $vendeur->setConcession($concession);
+        $manager->persist($vendeur);
+
+
+
+    
         $manager->flush();
+
+
     }
 }

@@ -32,13 +32,9 @@ class Marque
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
-    #[ORM\ManyToMany(targetEntity: Concession::class, inversedBy: 'marques')]
-    private Collection $concession;
 
-    public function __construct()
-    {
-        $this->concession = new ArrayCollection();
-    }
+
+
 
     public function getId(): ?int
     {
@@ -101,30 +97,6 @@ class Marque
     public function setImage(string $image): static
     {
         $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Concession>
-     */
-    public function getConcession(): Collection
-    {
-        return $this->concession;
-    }
-
-    public function addConcession(Concession $concession): static
-    {
-        if (!$this->concession->contains($concession)) {
-            $this->concession->add($concession);
-        }
-
-        return $this;
-    }
-
-    public function removeConcession(Concession $concession): static
-    {
-        $this->concession->removeElement($concession);
 
         return $this;
     }
